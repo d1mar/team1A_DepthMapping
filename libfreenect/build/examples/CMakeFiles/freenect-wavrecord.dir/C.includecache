@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/libfreenect.h
+stdint.h
+-
+winsock.h
+-
+sys/time.h
+-
+
+../include/libfreenect_audio.h
+libfreenect.h
+../include/libfreenect.h
+stdint.h
+-
+
+/home/pi1a/workspace/team1A_DepthMapping/libfreenect/examples/wavrecord.c
+libfreenect.h
+/home/pi1a/workspace/team1A_DepthMapping/libfreenect/examples/libfreenect.h
+libfreenect_audio.h
+/home/pi1a/workspace/team1A_DepthMapping/libfreenect/examples/libfreenect_audio.h
+stdio.h
+-
+signal.h
+-
+

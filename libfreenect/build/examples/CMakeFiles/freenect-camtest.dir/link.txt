@@ -1,0 +1,1 @@
+/usr/bin/cc -Wall -O2   -rdynamic CMakeFiles/freenect-camtest.dir/camtest.c.o  -o ../bin/freenect-camtest -Wl,-rpath,/home/pi1a/workspace/team1A_DepthMapping/libfreenect/build/lib: ../lib/libfreenect.so.0.6.0 -lusb-1.0 
