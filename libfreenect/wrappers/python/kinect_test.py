@@ -19,13 +19,13 @@ def get_depth():
 if __name__ == "__main__":
     while 1:
         #get a frame from RGB camera
-        frame = get_video()
+        #frame = get_video()
         #get a frame from depth sensor
-        #depth = get_depth()
+        depth = get_depth()
         #display RGB image
-        cv2.imshow('RGB image',frame)
+        #cv2.imshow('RGB image',frame)
         #display depth image
-        #cv2.imshow('Depth image',depth)
+        cv2.imshow('Depth image',depth)
 
         # quit program when 'esc' key is pressed
         k = cv2.waitKey(5) & 0xFF
