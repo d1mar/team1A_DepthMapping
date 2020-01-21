@@ -9,7 +9,8 @@ print('Press ESC in window to stop')
 
 
 def get_depth():
-    return frame_convert.pretty_depth_cv(freenect.sync_get_depth()[0])
+    frame = frame_convert.pretty_depth_cv(freenect.sync_get_depth()[0])
+    return frame
 
 
 def get_video():
