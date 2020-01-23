@@ -38,8 +38,8 @@ def process_image():
     cv2.imshow('geisel bw, resized', resize_img)
 
     # saving image
-    status = cv2.imwrite('../team1A_DepthMapping/geisel_bw.jpg', resize_img)
-    print('Image written to file-system: ', status)
+    #status = cv2.imwrite('../team1A_DepthMapping/geisel_bw.jpg', resize_img)
+    #print('Image written to file-system: ', status)
     
     cv2.waitKey(0)
     cv2.destroyAllWindows()
