@@ -6,7 +6,7 @@ import os
 import numpy as np
 
 def get_depth():
-    frame = frame_convert2.pretty_depth_cv(freenect.sync_get_depth()[0])
+    frame = freenect.sync_get_depth()[0]
     #print('\nframeDepth =\n')
     #print(frame)
     return frame
@@ -33,10 +33,7 @@ def main():
     #saving depth and video as jpg
     cv2.imwrite('vidcapture.jpg',video_frame)
     cv2.imwrite('depthcapture.jpg',depth_frame)
-    #saving depth and video as csv
-    #np.savetxt('depth_data.csv', depth_frame, delimiter=',')
-    #np.savetxt('video_data.csv', video_frame, delimiter=',')
-    
+    #saving depth and video as csv    
     with open('depthcapture.csv', 'w+') as csv_file:
         file_writer = csv.writer(csv_file, delimiter = ',')
         for i in range(len(depth_frame)):
