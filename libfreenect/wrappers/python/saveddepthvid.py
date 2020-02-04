@@ -2,11 +2,12 @@ import freenect
 import cv2
 import frame_convert2
 import csv
-import os
-import numpy as np
 
 def get_depth():
+    #saving as 11 bit for csv file 
     frame = freenect.sync_get_depth()[0]
+    #good for displaying and saving depth image
+    #frame = frame_convert2._depth_cv(freenect.sync_get_depth()[0])
     #print('\nframeDepth =\n')
     #print(frame)
     return frame
@@ -19,13 +20,13 @@ def get_video():
 
 def main():
     #display image and depth windows in while loop:
-    #while 1:
+#    while 1:
         #display depth
-        #cv2.imshow('Depth', get_depth())
+#        cv2.imshow('Depth', get_depth())
         #display video
-        #cv2.imshow('Video', get_video())
-        #if cv2.waitKey(10) == 27:
-        #break
+#        cv2.imshow('Video', get_video())
+#        if cv2.waitKey(10) == 27:
+#            break
 
     #once windows are closed last image is captured and saved
     depth_frame = get_depth()
@@ -45,3 +46,4 @@ def main():
 
 
 main()
+print('finished')
