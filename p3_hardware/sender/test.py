@@ -21,7 +21,7 @@ def plot_heatmap(filtered_depth):
     filtered_depth = filtered_depth.astype(int)
     x,y,z = filtered_depth[:,0], filtered_depth[:,1], filtered_depth[:,2]
     plots = [go.Heatmap(x=x, y=y, z=z)]
-    file_name = 'Heatmap2_filtered_depth.html' #the name of your file
+    file_name = 'Heatmap_filtered_depth.html' #the name of your file
     py.plot(plots,filename=file_name,auto_open=False)
 
 def main():
@@ -37,9 +37,11 @@ def main():
     #print(filt_array)
     #print(raw_array)
     print('filtering performed')
-    plot(filt_array,'Scatter_filtered_depth.html')
+    #plot(filt_array,'Scatter_filtered_depth.html')
     #plot(raw_array,'Scatter_raw_depth.html')
-    plot_heatmap(filt_array)
+    #plot_heatmap(filt_array)
     print('ploting performed')
 
-main()
+#return used when sender implemented so that sender file has access to filtered array
+    return filt_array
+#main()

@@ -18,7 +18,7 @@ LED_INVERT     = False   # True to invert the signal (when using NPN transistor 
 LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 CUBE_DIM       = 10      # define cube dimension
 LIT_LEDS       = 100     # number of LEDs lit at one time
-
+a
 
 # Define functions which animate LEDs in various ways.
 def colorWipe(strip, color, wait_ms=0):
