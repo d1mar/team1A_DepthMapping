@@ -8,10 +8,23 @@ def get_depth_11bit():
     #saving as 11 bit for csv file 
     frame = freenect.sync_get_depth()[0]
     return frame
+
 #function to get depth as jpg
 def get_depth():
     #good for displaying and saving depth image
-    frame = frame_convert2._depth_cv(freenect.sync_get_depth()[0])
+    frame = frame_convert2.pretty_depth_cv(freenect.sync_get_depth()[0])
+    return frame
+
+#live feed of video and depth
+def display():
+    while 1:
+        #display depth
+        cv2.imshow('Depth', get_depth())
+        #display video
+        cv2.imshow('Video', get_video())
+        if cv2.waitKey(10) == 27:
+            break
+
 #function to get video as jpg
 def get_video():
     frame = frame_convert2.video_cv(freenect.sync_get_video()[0])
@@ -23,22 +36,6 @@ def save_csv(depth_frame_11bit):
         file_writer = csv.writer(csv_file, delimiter = ',')
         for i in range(len(depth_frame_11bit)):
             file_writer.writerow(depth_frame_11bit[i])
-#Don't need to save video capture as csv (unessesary)
-#    with open('vidcapture.csv', 'w+') as csv_file:
-#        file_writer = csv.writer(csv_file, delimiter = ',')
-#        for i in range(len(video_frame)):
-#            file_writer.writerow(video_frame[i])
-
-#live feed of video and depth
-def display():
-    #display image and depth windows in while loop:
-    while 1:
-        #display depth
-        cv2.imshow('Depth', get_depth())
-        #display video
-        cv2.imshow('Video', get_video())
-        if cv2.waitKey(10) == 27:
-            break
 
 def snapshot():
     #loading vid and depth instance

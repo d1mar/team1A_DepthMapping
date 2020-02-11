@@ -1,43 +1,39 @@
-import freenect
-import cv2
-import frame_convert2
-import csv
-import math
-import numpy as np
-
+#importing my python files
+import vid_depth
+import filter_scaling
+#importing plotly
 import plotly.offline as py
 from plotly import graph_objs as go
-#to install plotly run 
-    #sudo pip install plotly
 
-#importing functions from other py files
-from vid_depth import display, snapshot
-from filter_scaling import filt_scale
 
-def plot(filtered_depth):
+def plot(filtered_depth,name):
 	#plotting 2d scatter plot
 	x, y, z = filtered_depth[:, 0], filtered_depth[:, 1], filtered_depth[:, 2]
 	plots = [go.Scatter3d(x=x, y=y, z=z, mode='markers', marker=dict(size=2), connectgaps=False)]
-	file_name = 'Scatter_filtered_depth' #the name of your file
-	py.plot(plots,filename=file_name,auto_open=True)
+	file_name = name  #the name of your file
+	py.plot(plots,filename=file_name)
 
-def plot(filtered_depth):
+def plot_heatmap(filtered_depth):
 	#ploting heat map
 	x, y, z = filtered_depth[:, 0], filtered_depth[:, 1], filtered_depth[:, 2]
 	plots = [go.Heatmap(x=x, y=y, z=z)]
-	file_name = 'Heatmap_filtered_depth' #the name of your file
-	py.plot(plots,filename=file_name,auto_open=True)
+	file_name = 'Heatmap_filtered_depth.html' #the name of your file
+	py.plot(plots,filename=file_name)
 
 def main():
 	#displaying realtime video/depth feed
-	#display()
-	
+        #vid_depth.display()
+
 #might automate this process so that when we upload to LED cube
 	#taking picure and saving jpg of video and depth, as csv file of depth 
 	#every time snapshot is ran it alters same files writing over them 
-	snapshot()
+        #vid_depth.snapshot()
 	#filtering and scaling
-	filt_array = filt_scale()
+        filt_array, raw_array = filter_scaling.filt_scale()
+        print('filtering performed')
+        plot(filt_array,'Scatter_filtered_depth.html')
+        plot(raw_array,'Scatter_raw_depth.html')
+        plot_heatmap(filt_array)
+        print('ploting performed')
 
-	plot(filt_array)
-	plot_heatmap(filt_array)
+main()
