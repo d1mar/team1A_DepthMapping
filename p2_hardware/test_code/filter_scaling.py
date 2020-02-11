@@ -16,13 +16,13 @@ def norm(cube, minimum, max_range, arr):
 
 #main filtering algorithm
 def filt_scale():
-
+#~~~~~~~~~~Filtering~~~~~~~~
     depth_data = []
     temp = np.loadtxt('depthcapture.csv',delimiter=',')
-    depth_data = temp.astype(int)
-    depth_data = np.asarray(depth_data)
+    depth_data = temp.astype(int) 
     raw_depth_data = np.copy(depth_data)
-
+    depth_data = np.asarray(depth_data)
+    
     #upper and lower depth bounds in feet
     ft_lo_depth = 1.5
     ft_u_depth = 3
@@ -44,13 +44,21 @@ def filt_scale():
     depth_data = np.where((depth_data>lo_depth) & (depth_data<u_depth),depth_data,0)
     #deleting all occurences of 0 in filtered array 
     depth_data = depth_data[depth_data != 0]
+    #print(len(depth_data))
+    #size_raw_data = len(raw_depth_data)*len(raw_depth_data[0])
+    #print(size_raw_data)
+    print('finished filtering')
+
+#~~~~~~~Scaling~~~~~~~~
 
     #seperating x,y,z coordinates
     x,y = zip(*cordinates2)
     x_arr = np.asarray(x)                   # All the x-values (from 0 to 639) where depth_data fits the depth bounds
     y_arr = np.asarray(y)                   # All the y-values (from 0 to 479) where depth_data fits the depth bounds
     z_arr = depth_data                      # All the z or depth values (11-bit) where depth_data fits the depth bounds
-
+    raw_depth = list(zip(x_arr,y_arr,z_arr))
+    raw_depth = np.array(raw_depth)
+    
     r = max(x_arr)
     le = min(x_arr)
     u = min(y_arr)
@@ -78,9 +86,6 @@ def filt_scale():
     y_arr = np.asarray(y_arr)
     z_arr = np.asarray(z_arr)
 
-    raw_depth = list(zip(x_arr,y_arr,z_arr))
-    raw_depth = np.array(raw_depth)
-
     #normalizing
     x_new = norm(cube_length, le, max_range, x_arr)
     y_new = norm(cube_length, u, max_range, y_arr)
@@ -89,5 +94,7 @@ def filt_scale():
     #filtered tuple numpy array
     filtered_depth = list(zip(x_new,y_new,z_new))
     filtered_depth = np.array(filtered_depth)
+    
+    print('finished scaling')
 
     return filtered_depth, raw_depth
