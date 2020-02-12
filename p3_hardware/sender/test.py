@@ -43,5 +43,5 @@ def main():
     print('ploting performed')
 
 #return used when sender implemented so that sender file has access to filtered array
-    return filt_array
-#main()
+    #return filt_array
+main()
