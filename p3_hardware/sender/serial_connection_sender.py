@@ -1,6 +1,7 @@
 import serial
 import time
 import io
+#importing test.py which performs all computations
 import test
 
 ser = serial.Serial(

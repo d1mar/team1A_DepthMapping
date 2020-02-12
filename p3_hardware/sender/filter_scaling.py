@@ -25,7 +25,7 @@ def filt_scale():
     
     #upper and lower depth bounds in feet
     ft_lo_depth = 1.5
-    ft_u_depth = 3
+    ft_u_depth = 2.5
     #converting value to integer (do not want decimal) and printing to check value
     lo_depth = conversion(ft_lo_depth)
     u_depth = conversion(ft_u_depth)

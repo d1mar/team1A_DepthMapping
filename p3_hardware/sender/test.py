@@ -37,9 +37,9 @@ def main():
     #print(filt_array)
     #print(raw_array)
     print('filtering performed')
-    #plot(filt_array,'Scatter_filtered_depth.html')
-    #plot(raw_array,'Scatter_raw_depth.html')
-    #plot_heatmap(filt_array)
+    plot(filt_array,'Scatter_filtered_depth.html')
+    plot(raw_array,'Scatter_raw_depth.html')
+    plot_heatmap(filt_array)
     print('ploting performed')
 
 #return used when sender implemented so that sender file has access to filtered array
